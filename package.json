@@ -14,6 +14,9 @@
     "mongodb": "^5.2.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.2.0",
-    "puppeteer": "^19.7.5"
+    "prettier": "^2.8.7",
+    "puppeteer": "^19.7.5",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^4.6.2"
   }
 }

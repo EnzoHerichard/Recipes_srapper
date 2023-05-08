@@ -1,0 +1,114 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mon API",
+    "description": "Documentation de mon API"
+  },
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/recipes": {
+      "get": {
+        "description": "Récupère toutes les recettes",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Recette"
+              }
+            }
+          },
+          "500": {
+            "description": "Erreur lors de la récupération des recettes"
+          }
+        }
+      }
+    },
+    "/recipes/:id/details": {
+      "get": {
+        "description": "Récupère les détails d'une recette",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la recette",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/RecetteDetails"
+            }
+          },
+          "404": {
+            "description": "Recette non trouvée"
+          },
+          "500": {
+            "description": "Erreur lors de la récupération des détails de la recette"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Recette": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "titre": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    },
+    "RecetteDetails": {
+      "type": "object",
+      "properties": {
+        "titre": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "ingredients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Ingredient"
+          }
+        }
+      }
+    },
+    "Ingredient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nom": {
+          "type": "string"
+        },
+        "quantite": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
